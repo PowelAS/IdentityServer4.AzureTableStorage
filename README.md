@@ -1,3 +1,3 @@
-# IdentityServer4.EntityFramework
+# IdentityServer4.AzureTableStorage
 
-IdentityServer4.EntityFramework is a persistence layer for IdentityServer 4 configuration data that uses EntityFramework as its database abstraction.
+IdentityServer4.AzureTableStorage is a persistence layer for IdentityServer 4 configuration data that uses Azure Table Storage as its database abstraction.

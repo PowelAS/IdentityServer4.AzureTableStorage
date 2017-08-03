@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\IdentityServer4.EntityFramework\IdentityServer4.EntityFramework.csproj" />
+    <ProjectReference Include="..\..\src\IdentityServer4.AzureTableStorage\IdentityServer4.AzureTableStorage.csproj" />
   </ItemGroup>
 
   <ItemGroup>

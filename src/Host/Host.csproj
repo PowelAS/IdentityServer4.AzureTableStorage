@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IdentityServer4.EntityFramework\IdentityServer4.EntityFramework.csproj" />
+    <ProjectReference Include="..\IdentityServer4.AzureTableStorage\IdentityServer4.AzureTableStorage.csproj" />
   </ItemGroup>
 
   <ItemGroup>
