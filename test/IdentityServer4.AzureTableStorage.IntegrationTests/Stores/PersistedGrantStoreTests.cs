@@ -43,155 +43,67 @@ namespace IdentityServer4.AzureTableStorage.IntegrationTests.Stores
         }
 
         [Fact]
-        public void StoreAsync_WhenPersistedGrantStored_ExpectSuccess()
-        {
-            //var persistedGrant = CreateTestObject();
-
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    var store = new PersistedGrantStore(context, FakeLogger<PersistedGrantStore>.Create());
-            //    store.StoreAsync(persistedGrant).Wait();
-            //}
-
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    var foundGrant = context.PersistedGrants.FirstOrDefault(x => x.Key == persistedGrant.Key);
-            //    Assert.NotNull(foundGrant);
-            //}
-
-            throw new NotImplementedException();
-        }
-
-        [Fact]
-        public void GetAsync_WithKeyAndPersistedGrantExists_ExpectPersistedGrantReturned()
-        {
-            //var persistedGrant = CreateTestObject();
-
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    context.PersistedGrants.Add(persistedGrant.ToEntity());
-            //    context.SaveChanges();
-            //}
-
-            //PersistedGrant foundPersistedGrant;
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    var store = new PersistedGrantStore(context, FakeLogger<PersistedGrantStore>.Create());
-            //    foundPersistedGrant = store.GetAsync(persistedGrant.Key).Result;
-            //}
-
-            //Assert.NotNull(foundPersistedGrant);
-
-            throw new NotImplementedException();
-        }
-
-        [Fact]
         public void GetAsync_WithSubAndTypeAndPersistedGrantExists_ExpectPersistedGrantReturned()
         {
-            //var persistedGrant = CreateTestObject();
+            var store = new PersistedGrantStore(GetConnectionString(), new FakeLogger<PersistedGrantStore>());
 
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    context.PersistedGrants.Add(persistedGrant.ToEntity());
-            //    context.SaveChanges();
-            //}
+            var persistedGrant = CreateTestObject();
+            store.StoreAsync(persistedGrant).Wait();
 
-            //IList<PersistedGrant> foundPersistedGrants;
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    var store = new PersistedGrantStore(context, FakeLogger<PersistedGrantStore>.Create());
-            //    foundPersistedGrants = store.GetAllAsync(persistedGrant.SubjectId).Result.ToList();
-            //}
-
-            //Assert.NotNull(foundPersistedGrants);
-            //Assert.NotEmpty(foundPersistedGrants);
-
-            throw new NotImplementedException();
+            var foundPersistedGrants = store.GetAllAsync(persistedGrant.SubjectId).Result.ToList();
+            Assert.NotNull(foundPersistedGrants);
+            Assert.NotEmpty(foundPersistedGrants);
+            Assert.Equal(1, foundPersistedGrants.Count);
+            Assert.Equal(persistedGrant.SubjectId, foundPersistedGrants[0].SubjectId);
         }
 
         [Fact]
         public void RemoveAsync_WhenKeyOfExistingReceived_ExpectGrantDeleted()
         {
-            //var persistedGrant = CreateTestObject();
+            var store = new PersistedGrantStore(GetConnectionString(), new FakeLogger<PersistedGrantStore>());
 
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    context.PersistedGrants.Add(persistedGrant.ToEntity());
-            //    context.SaveChanges();
-            //}
+            var persistedGrant = CreateTestObject();
+            store.StoreAsync(persistedGrant).Wait();
 
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    var store = new PersistedGrantStore(context, FakeLogger<PersistedGrantStore>.Create());
-            //    store.RemoveAsync(persistedGrant.Key).Wait();
-            //}
+            store.RemoveAsync(persistedGrant.Key).Wait();
 
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    var foundGrant = context.PersistedGrants.FirstOrDefault(x => x.Key == persistedGrant.Key);
-            //    Assert.Null(foundGrant);
-            //}
-
-            throw new NotImplementedException();
+            var foundGrant = store.GetAsync(persistedGrant.Key).Result;
+            Assert.Null(foundGrant);
         }
 
         [Fact]
         public void RemoveAsync_WhenSubIdAndClientIdOfExistingReceived_ExpectGrantDeleted()
         {
-            //var persistedGrant = CreateTestObject();
+            var store = new PersistedGrantStore(GetConnectionString(), new FakeLogger<PersistedGrantStore>());
 
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    context.PersistedGrants.Add(persistedGrant.ToEntity());
-            //    context.SaveChanges();
-            //}
+            var persistedGrant = CreateTestObject();
+            store.StoreAsync(persistedGrant).Wait();
 
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    var store = new PersistedGrantStore(context, FakeLogger<PersistedGrantStore>.Create());
-            //    store.RemoveAllAsync(persistedGrant.SubjectId, persistedGrant.ClientId).Wait();
-            //}
+            store.RemoveAllAsync(persistedGrant.SubjectId, persistedGrant.ClientId).Wait();
 
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    var foundGrant = context.PersistedGrants.FirstOrDefault(x => x.Key == persistedGrant.Key);
-            //    Assert.Null(foundGrant);
-            //}
-
-            throw new NotImplementedException();
+            var foundGrant = store.GetAsync(persistedGrant.Key).Result;
+            Assert.Null(foundGrant);
         }
 
         [Fact]
         public void RemoveAsync_WhenSubIdClientIdAndTypeOfExistingReceived_ExpectGrantDeleted()
         {
-            //var persistedGrant = CreateTestObject();
+            var store = new PersistedGrantStore(GetConnectionString(), new FakeLogger<PersistedGrantStore>());
 
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    context.PersistedGrants.Add(persistedGrant.ToEntity());
-            //    context.SaveChanges();
-            //}
+            var persistedGrant = CreateTestObject();
+            store.StoreAsync(persistedGrant).Wait();
 
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    var store = new PersistedGrantStore(context, FakeLogger<PersistedGrantStore>.Create());
-            //    store.RemoveAllAsync(persistedGrant.SubjectId, persistedGrant.ClientId, persistedGrant.Type).Wait();
-            //}
+            store.RemoveAllAsync(persistedGrant.SubjectId, persistedGrant.ClientId, persistedGrant.Type).Wait();
 
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    var foundGrant = context.PersistedGrants.FirstOrDefault(x => x.Key == persistedGrant.Key);
-            //    Assert.Null(foundGrant);
-            //}
-
-            throw new NotImplementedException();
+            var foundGrant = store.GetAsync(persistedGrant.Key).Result;
+            Assert.Null(foundGrant);
         }
 
         [Fact]
         public void Store_should_create_new_record_if_key_does_not_exist()
         {
-            var persistedGrant = CreateTestObject();
             var store = new PersistedGrantStore(GetConnectionString(), new FakeLogger<PersistedGrantStore>());
+            var persistedGrant = CreateTestObject();
 
             var missingGrant = store.GetAsync(persistedGrant.Key).Result;
             Assert.Null(missingGrant);
@@ -205,30 +117,18 @@ namespace IdentityServer4.AzureTableStorage.IntegrationTests.Stores
         [Fact]
         public void Store_should_update_record_if_key_already_exists()
         {
-            //var persistedGrant = CreateTestObject();
+            var store = new PersistedGrantStore(GetConnectionString(), new FakeLogger<PersistedGrantStore>());
 
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    context.PersistedGrants.Add(persistedGrant.ToEntity());
-            //    context.SaveChanges();
-            //}
+            var persistedGrant = CreateTestObject();
+            store.StoreAsync(persistedGrant).Wait();
 
-            //var newDate = persistedGrant.Expiration.Value.AddHours(1);
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    var store = new PersistedGrantStore(context, FakeLogger<PersistedGrantStore>.Create());
-            //    persistedGrant.Expiration = newDate;
-            //    store.StoreAsync(persistedGrant).Wait();
-            //}
+            var newDate = persistedGrant.Expiration.Value.AddHours(1);
+            persistedGrant.Expiration = newDate;
+            store.StoreAsync(persistedGrant).Wait();
 
-            //using (var context = new PersistedGrantDbContext(options, StoreOptions))
-            //{
-            //    var foundGrant = context.PersistedGrants.FirstOrDefault(x => x.Key == persistedGrant.Key);
-            //    Assert.NotNull(foundGrant);
-            //    Assert.Equal(newDate, persistedGrant.Expiration);
-            //}
-
-            throw new NotImplementedException();
+            var foundGrant = store.GetAsync(persistedGrant.Key).Result;
+            Assert.NotNull(foundGrant);
+            Assert.Equal(newDate, persistedGrant.Expiration);
         }
     }
 }
