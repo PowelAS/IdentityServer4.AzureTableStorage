@@ -3,14 +3,17 @@
 
 
 using System;
+using Microsoft.WindowsAzure.Storage.Table;
 
 namespace IdentityServer4.AzureTableStorage.Entities
 {
-    public class PersistedGrant
+    public class PersistedGrant : TableEntity
     {
-        public string Key { get; set; }
+        // a PersistedGrant.Key will map to TableEntity.PartitionKey
+        // public string Key { get; set; }
+        // a PersistedGrant.SubjectId will map to TableEntity.RowKey
+        // public string SubjectId { get; set; }
         public string Type { get; set; }
-        public string SubjectId { get; set; }
         public string ClientId { get; set; }
         public DateTime CreationTime { get; set; }
         public DateTime? Expiration { get; set; }

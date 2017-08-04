@@ -6,7 +6,6 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.AzureTableStorage.Options;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -90,18 +89,20 @@ namespace IdentityServer4.AzureTableStorage
                 
                 using (var serviceScope = _serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
                 {
-                    using (var context = serviceScope.ServiceProvider.GetService<PersistedGrantDbContext>())
-                    {
-                        var expired = context.PersistedGrants.Where(x => x.Expiration < DateTimeOffset.UtcNow).ToArray();
+                    //using (var context = serviceScope.ServiceProvider.GetService<PersistedGrantDbContext>())
+                    //{
+                    //    var expired = context.PersistedGrants.Where(x => x.Expiration < DateTimeOffset.UtcNow).ToArray();
 
-                        _logger.LogDebug("Clearing {tokenCount} tokens", expired.Length);
+                    //    _logger.LogDebug("Clearing {tokenCount} tokens", expired.Length);
 
-                        if (expired.Length > 0)
-                        {
-                            context.PersistedGrants.RemoveRange(expired);
-                            context.SaveChanges();
-                        }
-                    }
+                    //    if (expired.Length > 0)
+                    //    {
+                    //        context.PersistedGrants.RemoveRange(expired);
+                    //        context.SaveChanges();
+                    //    }
+                    //}
+
+                    throw new NotImplementedException();
                 }
             }
             catch (Exception ex)

@@ -5,12 +5,11 @@
 using System.Linq;
 using System.Reflection;
 using Host.Configuration;
-using IdentityServer4.EntityFramework.DbContexts;
 using IdentityServer4.AzureTableStorage.Mappers;
 using IdentityServer4.AzureTableStorage.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
@@ -25,25 +24,21 @@ namespace Host
     {
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            const string connectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;database=IdentityServer4.EntityFramework;trusted_connection=yes;";
+            var configuration = new ConfigurationBuilder()
+                .AddEnvironmentVariables()
+                .AddUserSecrets<Startup>()
+                .Build();
+            
+            var connectionString = configuration["IdentityServerTableStorageConnectionString"];
             
             services.AddMvc();
-
-            var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             services.AddIdentityServer()
                 .AddTemporarySigningCredential()
                 .AddSecretParser<ClientAssertionSecretParser>()
                 .AddSecretValidator<PrivateKeyJwtSecretValidator>()
                 .AddTestUsers(TestUsers.Users)
-
-                .AddConfigurationStore(builder =>
-                    builder.UseSqlServer(connectionString,
-                        options => options.MigrationsAssembly(migrationsAssembly)))
-
-                .AddOperationalStore(builder =>
-                    builder.UseSqlServer(connectionString,
-                        options => options.MigrationsAssembly(migrationsAssembly)));
+                .AddOperationalStore(connectionString);
 
             return services.BuildServiceProvider(validateScopes: true);
         }
@@ -74,9 +69,7 @@ namespace Host
             // Setup Databases
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                serviceScope.ServiceProvider.GetService<ConfigurationDbContext>().Database.Migrate();
-                serviceScope.ServiceProvider.GetService<PersistedGrantDbContext>().Database.Migrate();
-                EnsureSeedData(serviceScope.ServiceProvider.GetService<ConfigurationDbContext>());
+                EnsureSeedData();
             }
 
             app.UseIdentityServer();
@@ -86,34 +79,36 @@ namespace Host
             app.UseMvcWithDefaultRoute();
         }
 
-        private static void EnsureSeedData(ConfigurationDbContext context)
+        private static void EnsureSeedData()
         {
-            if (!context.Clients.Any())
-            {
-                foreach (var client in Clients.Get().ToList())
-                {
-                    context.Clients.Add(client.ToEntity());
-                }
-                context.SaveChanges();
-            }
+            //if (!context.Clients.Any())
+            //{
+            //    foreach (var client in Clients.Get().ToList())
+            //    {
+            //        context.Clients.Add(client.ToEntity());
+            //    }
+            //    context.SaveChanges();
+            //}
 
-            if (!context.IdentityResources.Any())
-            {
-                foreach (var resource in Resources.GetIdentityResources().ToList())
-                {
-                    context.IdentityResources.Add(resource.ToEntity());
-                }
-                context.SaveChanges();
-            }
+            //if (!context.IdentityResources.Any())
+            //{
+            //    foreach (var resource in Resources.GetIdentityResources().ToList())
+            //    {
+            //        context.IdentityResources.Add(resource.ToEntity());
+            //    }
+            //    context.SaveChanges();
+            //}
 
-            if (!context.ApiResources.Any())
-            {
-                foreach (var resource in Resources.GetApiResources().ToList())
-                {
-                    context.ApiResources.Add(resource.ToEntity());
-                }
-                context.SaveChanges();
-            }
+            //if (!context.ApiResources.Any())
+            //{
+            //    foreach (var resource in Resources.GetApiResources().ToList())
+            //    {
+            //        context.ApiResources.Add(resource.ToEntity());
+            //    }
+            //    context.SaveChanges();
+            //}
+
+            throw new NotImplementedException();
         }
     }
 }

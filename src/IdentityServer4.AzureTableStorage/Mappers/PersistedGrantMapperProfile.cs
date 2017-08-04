@@ -21,10 +21,14 @@ namespace IdentityServer4.AzureTableStorage.Mappers
         public PersistedGrantMapperProfile()
         {
             // entity to model
-            CreateMap<Entities.PersistedGrant, Models.PersistedGrant>(MemberList.Destination);
+            CreateMap<Entities.PersistedGrant, Models.PersistedGrant>(MemberList.Destination)
+                .ForMember(dest => dest.Key, opt => opt.MapFrom(src => src.PartitionKey))
+                .ForMember(dest => dest.SubjectId, opt => opt.MapFrom(src => src.RowKey));
 
             // model to entity
-            CreateMap<Models.PersistedGrant, Entities.PersistedGrant>(MemberList.Source);
+            CreateMap<Models.PersistedGrant, Entities.PersistedGrant>(MemberList.Source)
+                .ForMember(dest => dest.PartitionKey, opt => opt.MapFrom(src => src.Key))
+                .ForMember(dest => dest.RowKey, opt => opt.MapFrom(src => src.SubjectId));
         }
     }
 }
