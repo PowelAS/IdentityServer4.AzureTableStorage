@@ -4,12 +4,12 @@
     <Description>EntityFramework persistence layer for IdentityServer4</Description>
     <Authors>Brock Allen;Dominick Baier;Scott Brady</Authors>
     <TargetFrameworks>netstandard1.4;net452</TargetFrameworks>
-    <AssemblyName>IdentityServer4.EntityFramework</AssemblyName>
-    <PackageId>IdentityServer4.EntityFramework</PackageId>
+    <AssemblyName>IdentityServer4.AzureTableStorage</AssemblyName>
+    <PackageId>IdentityServer4.AzureTableStorage</PackageId>
     <PackageTags>OAuth2;OAuth 2.0;OpenID Connect;Security;Identity;IdentityServer;EntityFramework</PackageTags>
     <PackageIconUrl>https://raw.githubusercontent.com/IdentityServer/Artwork/master/Logos/IDserver_icon128.jpg</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/IdentityServer/IdentityServer4.EntityFramework</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/IdentityServer/IdentityServer4.EntityFramework/blob/release/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/IdentityServer/IdentityServer4.AzureTableStorage</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/IdentityServer/IdentityServer4.AzureTableStorage/blob/release/LICENSE</PackageLicenseUrl>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>

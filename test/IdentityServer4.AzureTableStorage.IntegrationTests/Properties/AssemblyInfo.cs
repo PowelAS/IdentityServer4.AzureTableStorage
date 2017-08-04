@@ -12,7 +12,7 @@ using Xunit;
 // associated with an assembly.
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("IdentityServer4.EntityFramework.IntegrationTests")]
+[assembly: AssemblyProduct("IdentityServer4.AzureTableStorage.IntegrationTests")]
 [assembly: AssemblyTrademark("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible

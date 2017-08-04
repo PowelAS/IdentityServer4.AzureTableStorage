@@ -5,7 +5,7 @@
 using AutoMapper;
 using IdentityServer4.Models;
 
-namespace IdentityServer4.EntityFramework.Mappers
+namespace IdentityServer4.AzureTableStorage.Mappers
 {
     public static class PersistedGrantMappers
     {

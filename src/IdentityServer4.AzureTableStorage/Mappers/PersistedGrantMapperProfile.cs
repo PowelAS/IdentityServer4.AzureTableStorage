@@ -4,7 +4,7 @@
 
 using AutoMapper;
 
-namespace IdentityServer4.EntityFramework.Mappers
+namespace IdentityServer4.AzureTableStorage.Mappers
 {
     /// <summary>
     /// AutoMapper Config for PersistedGrant

@@ -7,11 +7,11 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using IdentityServer4.EntityFramework.DbContexts;
-using IdentityServer4.EntityFramework.Options;
+using IdentityServer4.AzureTableStorage.Options;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace IdentityServer4.EntityFramework
+namespace IdentityServer4.AzureTableStorage
 {
     internal class TokenCleanup
     {

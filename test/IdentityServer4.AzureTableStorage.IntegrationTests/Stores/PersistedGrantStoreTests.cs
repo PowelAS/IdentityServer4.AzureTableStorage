@@ -6,14 +6,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using IdentityServer4.EntityFramework.DbContexts;
-using IdentityServer4.EntityFramework.Mappers;
-using IdentityServer4.EntityFramework.Options;
-using IdentityServer4.EntityFramework.Stores;
+using IdentityServer4.AzureTableStorage.Mappers;
+using IdentityServer4.AzureTableStorage.Options;
+using IdentityServer4.AzureTableStorage.Stores;
 using IdentityServer4.Models;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
-namespace IdentityServer4.EntityFramework.IntegrationTests.Stores
+namespace IdentityServer4.AzureTableStorage.IntegrationTests.Stores
 {
     public class PersistedGrantStoreTests : IClassFixture<DatabaseProviderFixture<PersistedGrantDbContext>>
     {

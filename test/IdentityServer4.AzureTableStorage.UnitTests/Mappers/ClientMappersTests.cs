@@ -3,12 +3,12 @@
 
 
 using System.Collections.Generic;
-using IdentityServer4.EntityFramework.Entities;
-using IdentityServer4.EntityFramework.Mappers;
+using IdentityServer4.AzureTableStorage.Entities;
+using IdentityServer4.AzureTableStorage.Mappers;
 using Xunit;
 using Client = IdentityServer4.Models.Client;
 
-namespace IdentityServer4.EntityFramework.UnitTests.Mappers
+namespace IdentityServer4.AzureTableStorage.UnitTests.Mappers
 {
     public class ClientMappersTests
     {

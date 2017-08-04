@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
-    <AssemblyName>IdentityServer4.EntityFramework.UnitTests</AssemblyName>
-    <PackageId>IdentityServer4.EntityFramework.UnitTests</PackageId>
+    <AssemblyName>IdentityServer4.AzureTableStorage.UnitTests</AssemblyName>
+    <PackageId>IdentityServer4.AzureTableStorage.UnitTests</PackageId>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <RuntimeFrameworkVersion>1.1.1</RuntimeFrameworkVersion>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>

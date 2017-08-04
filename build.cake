@@ -4,7 +4,7 @@ var configuration   = Argument<string>("configuration", "Release");
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
 ///////////////////////////////////////////////////////////////////////////////
-var packPath            = Directory("./src/IdentityServer4.EntityFramework");
+var packPath            = Directory("./src/IdentityServer4.AzureTableStorage");
 var buildArtifacts      = Directory("./artifacts/packages");
 
 var isAppVeyor          = AppVeyor.IsRunningOnAppVeyor;
@@ -58,9 +58,9 @@ Task("Build")
     // build for all targets
     if (isWindows)
     {
-        DotNetCoreBuild(Directory("./src/IdentityServer4.EntityFramework"), settings);
-        DotNetCoreBuild(Directory("./test/IdentityServer4.EntityFramework.IntegrationTests"), settings);
-        DotNetCoreBuild(Directory("./test/IdentityServer4.EntityFramework.UnitTests"), settings);
+        DotNetCoreBuild(Directory("./src/IdentityServer4.AzureTableStorage"), settings);
+        DotNetCoreBuild(Directory("./test/IdentityServer4.AzureTableStorage.IntegrationTests"), settings);
+        DotNetCoreBuild(Directory("./test/IdentityServer4.AzureTableStorage.UnitTests"), settings);
 
         if (!isAppVeyor)
         {
@@ -72,12 +72,12 @@ Task("Build")
     else
     {
         settings.Framework = netstandard;
-        DotNetCoreBuild(Directory("./src/IdentityServer4.EntityFramework"), settings);
+        DotNetCoreBuild(Directory("./src/IdentityServer4.AzureTableStorage"), settings);
         
         settings.Framework = netcore;
         DotNetCoreBuild(Directory("./src/Host"), settings);     
-        DotNetCoreBuild(Directory("./test/IdentityServer4.EntityFramework.IntegrationTests"), settings);
-        DotNetCoreBuild(Directory("./test/IdentityServer4.EntityFramework.UnitTests"), settings);
+        DotNetCoreBuild(Directory("./test/IdentityServer4.AzureTableStorage.IntegrationTests"), settings);
+        DotNetCoreBuild(Directory("./test/IdentityServer4.AzureTableStorage.UnitTests"), settings);
     }
 });
 

@@ -11,11 +11,11 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("IdentityServer4.EntityFramework")]
+[assembly: AssemblyProduct("IdentityServer4.AzureTableStorage")]
 [assembly: AssemblyTrademark("")]
 
-[assembly: InternalsVisibleTo("IdentityServer4.EntityFramework.UnitTests")]
-[assembly: InternalsVisibleTo("IdentityServer4.EntityFramework.IntegrationTests")]
+[assembly: InternalsVisibleTo("IdentityServer4.AzureTableStorage.UnitTests")]
+[assembly: InternalsVisibleTo("IdentityServer4.AzureTableStorage.IntegrationTests")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from

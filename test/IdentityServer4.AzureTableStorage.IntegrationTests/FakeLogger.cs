@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IdentityServer4.EntityFramework.IntegrationTests
+namespace IdentityServer4.AzureTableStorage.IntegrationTests
 {
     public class FakeLogger<T> : FakeLogger, ILogger<T>
     {

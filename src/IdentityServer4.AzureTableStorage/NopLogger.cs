@@ -5,7 +5,7 @@
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace IdentityServer4.EntityFramework
+namespace IdentityServer4.AzureTableStorage
 {
     class NopLogger : ILogger, IDisposable
     {

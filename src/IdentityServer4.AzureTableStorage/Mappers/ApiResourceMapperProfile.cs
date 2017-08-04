@@ -4,9 +4,9 @@
 
 using System.Linq;
 using AutoMapper;
-using IdentityServer4.EntityFramework.Entities;
+using IdentityServer4.AzureTableStorage.Entities;
 
-namespace IdentityServer4.EntityFramework.Mappers
+namespace IdentityServer4.AzureTableStorage.Mappers
 {
     /// <summary>
     /// AutoMapper configuration for API resource

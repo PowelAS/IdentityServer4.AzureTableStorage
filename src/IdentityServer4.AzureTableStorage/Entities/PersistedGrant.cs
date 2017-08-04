@@ -4,7 +4,7 @@
 
 using System;
 
-namespace IdentityServer4.EntityFramework.Entities
+namespace IdentityServer4.AzureTableStorage.Entities
 {
     public class PersistedGrant
     {

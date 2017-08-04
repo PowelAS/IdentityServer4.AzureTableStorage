@@ -7,13 +7,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IdentityServer4.EntityFramework.Interfaces;
-using IdentityServer4.EntityFramework.Mappers;
+using IdentityServer4.AzureTableStorage.Mappers;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 
-namespace IdentityServer4.EntityFramework.Stores
+namespace IdentityServer4.AzureTableStorage.Stores
 {
     public class PersistedGrantStore : IPersistedGrantStore
     {
