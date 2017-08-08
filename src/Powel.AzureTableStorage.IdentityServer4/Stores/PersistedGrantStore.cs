@@ -7,9 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Powel.AzureTableStorage.IdentityServer4.Mappers;
+using Powel.AzureTableStorage.IdentityServer4.Options;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 
@@ -21,9 +23,9 @@ namespace Powel.AzureTableStorage.IdentityServer4.Stores
         private readonly ILogger _logger;
         private CloudTable _cloudTable;
 
-        public PersistedGrantStore(string connectionString, ILogger<PersistedGrantStore> logger)
+        public PersistedGrantStore(IOptions<DatabaseOptions> optionsAccessor, ILogger<PersistedGrantStore> logger)
         {
-            _connectionString = connectionString;
+            _connectionString = optionsAccessor.Value.ConnectionString;
             _logger = logger;
         }
 

@@ -45,7 +45,7 @@ namespace Powel.AzureTableStorage.IdentityServer4.IntegrationTests.Stores
         [Fact]
         public void GetAsync_WithSubAndTypeAndPersistedGrantExists_ExpectPersistedGrantReturned()
         {
-            var store = new PersistedGrantStore(GetConnectionString(), new FakeLogger<PersistedGrantStore>());
+            var store = new PersistedGrantStore(new TestOptions(), new FakeLogger<PersistedGrantStore>());
 
             var persistedGrant = CreateTestObject();
             store.StoreAsync(persistedGrant).Wait();
@@ -60,7 +60,7 @@ namespace Powel.AzureTableStorage.IdentityServer4.IntegrationTests.Stores
         [Fact]
         public void RemoveAsync_WhenKeyOfExistingReceived_ExpectGrantDeleted()
         {
-            var store = new PersistedGrantStore(GetConnectionString(), new FakeLogger<PersistedGrantStore>());
+            var store = new PersistedGrantStore(new TestOptions(), new FakeLogger<PersistedGrantStore>());
 
             var persistedGrant = CreateTestObject();
             store.StoreAsync(persistedGrant).Wait();
@@ -74,7 +74,7 @@ namespace Powel.AzureTableStorage.IdentityServer4.IntegrationTests.Stores
         [Fact]
         public void RemoveAsync_WhenSubIdAndClientIdOfExistingReceived_ExpectGrantDeleted()
         {
-            var store = new PersistedGrantStore(GetConnectionString(), new FakeLogger<PersistedGrantStore>());
+            var store = new PersistedGrantStore(new TestOptions(), new FakeLogger<PersistedGrantStore>());
 
             var persistedGrant = CreateTestObject();
             store.StoreAsync(persistedGrant).Wait();
@@ -88,7 +88,7 @@ namespace Powel.AzureTableStorage.IdentityServer4.IntegrationTests.Stores
         [Fact]
         public void RemoveAsync_WhenSubIdClientIdAndTypeOfExistingReceived_ExpectGrantDeleted()
         {
-            var store = new PersistedGrantStore(GetConnectionString(), new FakeLogger<PersistedGrantStore>());
+            var store = new PersistedGrantStore(new TestOptions(), new FakeLogger<PersistedGrantStore>());
 
             var persistedGrant = CreateTestObject();
             store.StoreAsync(persistedGrant).Wait();
@@ -102,7 +102,7 @@ namespace Powel.AzureTableStorage.IdentityServer4.IntegrationTests.Stores
         [Fact]
         public void Store_should_create_new_record_if_key_does_not_exist()
         {
-            var store = new PersistedGrantStore(GetConnectionString(), new FakeLogger<PersistedGrantStore>());
+            var store = new PersistedGrantStore(new TestOptions(), new FakeLogger<PersistedGrantStore>());
             var persistedGrant = CreateTestObject();
 
             var missingGrant = store.GetAsync(persistedGrant.Key).Result;
@@ -117,7 +117,7 @@ namespace Powel.AzureTableStorage.IdentityServer4.IntegrationTests.Stores
         [Fact]
         public void Store_should_update_record_if_key_already_exists()
         {
-            var store = new PersistedGrantStore(GetConnectionString(), new FakeLogger<PersistedGrantStore>());
+            var store = new PersistedGrantStore(new TestOptions(), new FakeLogger<PersistedGrantStore>());
 
             var persistedGrant = CreateTestObject();
             store.StoreAsync(persistedGrant).Wait();

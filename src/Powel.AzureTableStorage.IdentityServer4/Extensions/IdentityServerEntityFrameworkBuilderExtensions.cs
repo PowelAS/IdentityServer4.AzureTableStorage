@@ -21,6 +21,12 @@ namespace Microsoft.Extensions.DependencyInjection
             Action<OperationalStoreOptions> storeOptionsAction = null,
             Action<TokenCleanupOptions> tokenCleanUpOptions = null)
         {
+            builder.Services.Configure<DatabaseOptions>(dbOptions =>
+            {
+                dbOptions.ConnectionString = connectionString;
+            });
+
+
             builder.Services.AddTransient<IPersistedGrantStore, PersistedGrantStore>();
 
             var storeOptions = new OperationalStoreOptions();
