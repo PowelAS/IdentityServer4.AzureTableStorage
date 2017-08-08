@@ -5,8 +5,8 @@
 using System.Linq;
 using System.Reflection;
 using Host.Configuration;
-using IdentityServer4.AzureTableStorage.Mappers;
-using IdentityServer4.AzureTableStorage.Options;
+using Powel.AzureTableStorage.IdentityServer4.Mappers;
+using Powel.AzureTableStorage.IdentityServer4.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -61,7 +61,7 @@ namespace Host
                 .Enrich.FromLogContext()
                 .Filter.ByIncludingOnly(serilogFilter)
                 .WriteTo.LiterateConsole(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message}{NewLine}{Exception}{NewLine}")
-                .WriteTo.File(@"c:\logs\IdentityServer4.AzureTableStorage.Host.txt")
+                .WriteTo.File(@"c:\logs\Powel.AzureTableStorage.IdentityServer4.Host.txt")
                 .CreateLogger();
 
             loggerFactory.AddSerilog(serilog);

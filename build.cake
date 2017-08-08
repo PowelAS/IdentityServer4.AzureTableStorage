@@ -4,7 +4,7 @@ var configuration   = Argument<string>("configuration", "Release");
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
 ///////////////////////////////////////////////////////////////////////////////
-var packPath            = Directory("./src/IdentityServer4.AzureTableStorage");
+var packPath            = Directory("./src/Powel.AzureTableStorage.IdentityServer4");
 var buildArtifacts      = Directory("./artifacts/packages");
 
 var isAppVeyor          = AppVeyor.IsRunningOnAppVeyor;
@@ -58,9 +58,9 @@ Task("Build")
     // build for all targets
     if (isWindows)
     {
-        DotNetCoreBuild(Directory("./src/IdentityServer4.AzureTableStorage"), settings);
-        DotNetCoreBuild(Directory("./test/IdentityServer4.AzureTableStorage.IntegrationTests"), settings);
-        DotNetCoreBuild(Directory("./test/IdentityServer4.AzureTableStorage.UnitTests"), settings);
+        DotNetCoreBuild(Directory("./src/Powel.AzureTableStorage.IdentityServer4"), settings);
+        DotNetCoreBuild(Directory("./test/Powel.AzureTableStorage.IdentityServer4.IntegrationTests"), settings);
+        DotNetCoreBuild(Directory("./test/Powel.AzureTableStorage.IdentityServer4.UnitTests"), settings);
 
         if (!isAppVeyor)
         {
@@ -72,12 +72,12 @@ Task("Build")
     else
     {
         settings.Framework = netstandard;
-        DotNetCoreBuild(Directory("./src/IdentityServer4.AzureTableStorage"), settings);
+        DotNetCoreBuild(Directory("./src/Powel.AzureTableStorage.IdentityServer4"), settings);
         
         settings.Framework = netcore;
         DotNetCoreBuild(Directory("./src/Host"), settings);     
-        DotNetCoreBuild(Directory("./test/IdentityServer4.AzureTableStorage.IntegrationTests"), settings);
-        DotNetCoreBuild(Directory("./test/IdentityServer4.AzureTableStorage.UnitTests"), settings);
+        DotNetCoreBuild(Directory("./test/Powel.AzureTableStorage.IdentityServer4.IntegrationTests"), settings);
+        DotNetCoreBuild(Directory("./test/Powel.AzureTableStorage.IdentityServer4.UnitTests"), settings);
     }
 });
 

@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IdentityServer4.AzureTableStorage\IdentityServer4.AzureTableStorage.csproj" />
+    <ProjectReference Include="..\Powel.AzureTableStorage.IdentityServer4\Powel.AzureTableStorage.IdentityServer4.csproj" />
   </ItemGroup>
 
   <ItemGroup>
