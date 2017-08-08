@@ -66,12 +66,6 @@ namespace Host
 
             loggerFactory.AddSerilog(serilog);
             
-            // Setup Databases
-            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
-            {
-                EnsureSeedData();
-            }
-
             app.UseIdentityServer();
             app.UseIdentityServerEfTokenCleanup(applicationLifetime);
             
