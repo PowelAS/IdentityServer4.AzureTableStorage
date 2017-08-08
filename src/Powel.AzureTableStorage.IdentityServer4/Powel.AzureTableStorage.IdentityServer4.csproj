@@ -1,19 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>EntityFramework persistence layer for IdentityServer4</Description>
-    <Authors>Brock Allen;Dominick Baier;Scott Brady</Authors>
+    <Description>Azure Table Storage persistence layer for IdentityServer4</Description>
+    <Authors>Brock Allen;Dominick Baier;Scott Brady;Tor Hovland</Authors>
     <TargetFrameworks>netstandard1.4;net452</TargetFrameworks>
     <AssemblyName>Powel.AzureTableStorage.IdentityServer4</AssemblyName>
     <PackageId>Powel.AzureTableStorage.IdentityServer4</PackageId>
-    <PackageTags>OAuth2;OAuth 2.0;OpenID Connect;Security;Identity;IdentityServer;EntityFramework</PackageTags>
-    <PackageIconUrl>https://raw.githubusercontent.com/IdentityServer/Artwork/master/Logos/IDserver_icon128.jpg</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/IdentityServer/Powel.AzureTableStorage.IdentityServer4</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/IdentityServer/Powel.AzureTableStorage.IdentityServer4/blob/release/LICENSE</PackageLicenseUrl>
+    <PackageTags>OAuth2;OAuth 2.0;OpenID Connect;Security;Identity;IdentityServer;Azure;Azure Storage;Azure Table Storage</PackageTags>
+    <PackageIconUrl>https://www.powel.com/globalassets/mediabank/logos/powel_logo_regular.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/PowelAS/Powel.AzureTableStorage.IdentityServer4</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/PowelAS/Powel.AzureTableStorage.IdentityServer4/blob/dev/LICENSE</PackageLicenseUrl>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <Version>1.0.1</Version>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
