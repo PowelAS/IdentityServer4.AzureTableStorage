@@ -44,6 +44,7 @@ namespace Powel.AzureTableStorage.IdentityServer4.Stores
         public async Task StoreAsync(PersistedGrant token)
         {
             var persistedGrant = token.ToEntity();
+            _logger.LogDebug("storing persisted grant: {persistedGrant}", persistedGrant);
             var table = await InitTable();
             var operation = TableOperation.InsertOrReplace(persistedGrant);
             var result = await table.ExecuteAsync(operation);

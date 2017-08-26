@@ -18,5 +18,10 @@ namespace Powel.AzureTableStorage.IdentityServer4.Entities
         public DateTime CreationTime { get; set; }
         public DateTime? Expiration { get; set; }
         public string Data { get; set; }
+
+        public override string ToString()
+        {
+            return $"{{PartitionKey (Key): '{PartitionKey}', RowKey (SubjectId): '{RowKey}', Type: '{Type}', ClientId: '{ClientId}', CreationTime: '{CreationTime}', Expiration: '{Expiration}', Data: '{Data}'}}";
+        }
     }
 }
