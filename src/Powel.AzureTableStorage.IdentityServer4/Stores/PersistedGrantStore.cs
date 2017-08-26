@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Powel.AzureTableStorage.IdentityServer4.Mappers;
 using Powel.AzureTableStorage.IdentityServer4.Options;
@@ -55,7 +56,7 @@ namespace Powel.AzureTableStorage.IdentityServer4.Stores
         {
             var table = await InitTable();
             Entities.PersistedGrant model = null;
-            var query = new TableQuery<Entities.PersistedGrant>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, key));
+            var query = new TableQuery<Entities.PersistedGrant>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, WebUtility.UrlEncode(key)));
             TableContinuationToken continuationToken = null;
 
             do
