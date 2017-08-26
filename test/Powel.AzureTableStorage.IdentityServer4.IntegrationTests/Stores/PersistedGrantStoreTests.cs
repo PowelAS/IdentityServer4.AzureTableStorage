@@ -23,10 +23,10 @@ namespace Powel.AzureTableStorage.IdentityServer4.IntegrationTests.Stores
         {
             return new PersistedGrant
             {
-                Key = Guid.NewGuid().ToString(),
+                Key = "cixjnH510x/aq25gCeVvI0h400000000JYC5jCeHroo=",
                 Type = "authorization_code",
                 ClientId = Guid.NewGuid().ToString(),
-                SubjectId = Guid.NewGuid().ToString(),
+                SubjectId = "ccfe87807159f8db181000000000f8a761d9885180b10eb562105c300c079690",
                 CreationTime = new DateTime(2016, 08, 01),
                 Expiration = new DateTime(2016, 08, 31),
                 Data = Guid.NewGuid().ToString()
