@@ -105,6 +105,7 @@ namespace Powel.AzureTableStorage.IdentityServer4.IntegrationTests.Stores
             var store = new PersistedGrantStore(new TestOptions(), new FakeLogger<PersistedGrantStore>());
             var persistedGrant = CreateTestObject();
 
+            store.RemoveAsync(persistedGrant.Key).Wait();
             var missingGrant = store.GetAsync(persistedGrant.Key).Result;
             Assert.Null(missingGrant);
 
